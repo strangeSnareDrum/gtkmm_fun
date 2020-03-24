@@ -12,7 +12,9 @@ SET(CMAKE_CXX_COMPILER "/usr/bin/clang++-9")
 find_package(PkgConfig)
 pkg_check_modules(GTKMM gtkmm-3.0) # defines GTKMM_INCLUDE_DIRS, GTKMM_LIBRARY_DIRS and GTKMM_LIBRARIES 
 
+find_package(Threads REQUIRED)
+
 link_directories(${GTKMM_LIBRARY_DIRS})
 include_directories(${GTKMM_INCLUDE_DIRS})
 add_executable(${PROJECT_NAME} ${SRC})
-target_link_libraries(${PROJECT_NAME} ${GTKMM_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${GTKMM_LIBRARIES} Threads::Threads)

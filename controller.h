@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <thread>
 
 #include "gui.h"
 
@@ -15,12 +16,16 @@ class Controller {
    public:
     Controller(Gui* gui);
     Controller();
+    ~Controller();
     void start();
     void stop();
     void inc();
 
    private:
+    void runner();
+    bool mRunning = false;
+    std::thread mRunnerThread;
     int mNumber;
-    State state;
+    State mState;
     Gui* mGui;
 };

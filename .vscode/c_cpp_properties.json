@@ -4,7 +4,6 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/pthread",
                 "/usr/include/gtkmm-3.0",
                 "/usr/include/glibmm-2.4",
                 "/usr/include/gtk-3.0",
@@ -35,7 +34,8 @@
             "defines": [],
             "cStandard": "c11",
             "cppStandard": "c++17",
-            "intelliSenseMode": "clang-x64"
+            "intelliSenseMode": "clang-x64",
+            "configurationProvider": "vector-of-bool.cmake-tools"
         }
     ],
     "version": 4
