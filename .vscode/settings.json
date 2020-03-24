@@ -1,0 +1,9 @@
+{
+    "C_Cpp.errorSquiggles": "Disabled",
+    "editor.formatOnSave": true,
+    "clang-format.executable": "/usr/bin/clang-format-9",
+    "C_Cpp.clang_format_style": "file",
+    "files.associations": {
+        "istream": "cpp"
+    }
+}
