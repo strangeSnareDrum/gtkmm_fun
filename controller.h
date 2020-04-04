@@ -23,4 +23,5 @@ class Controller {
     std::thread mRunnerThread;
     State mState;
     Gui* mGui;
+    int mCounter;
 };

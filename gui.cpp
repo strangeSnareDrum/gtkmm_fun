@@ -5,7 +5,7 @@
 Gui::Gui()
     : mBoxMain(Gtk::ORIENTATION_HORIZONTAL),
       mBoxL(Gtk::ORIENTATION_VERTICAL),
-      mLabel("roof") {
+      mLabel("") {
     std::cout << "Gui constructor" << std::endl;
 
     // window
@@ -30,14 +30,18 @@ Gui::Gui()
         sigc::mem_fun(*this, &Gui::buttonStopClicked));
 
     add(mBoxMain);
-    mBoxMain.pack_start(mBoxL);
+    mBoxMain.pack_start(mBoxL, Gtk::PACK_SHRINK, 10);
     mBoxMain.pack_start(mBoxR);
-    mBoxL.pack_start(mButtonStart);
-    mBoxL.pack_start(mButtonPause);
-    mBoxL.pack_start(mButtonStop);
+    mBoxL.pack_start(mButtonStart, Gtk::PACK_EXPAND_WIDGET, 10);
+    mBoxL.pack_start(mButtonPause, Gtk::PACK_EXPAND_WIDGET, 10);
+    mBoxL.pack_start(mButtonStop, Gtk::PACK_EXPAND_WIDGET, 10);
     mBoxR.pack_start(mLabel);
     mLabel.set_visible(true);
     show_all();
+}
+
+Gui::~Gui() {
+    std::cout << "Gui destructor\n";
 }
 
 void Gui::init(Controller* controller) {
@@ -48,21 +52,24 @@ void Gui::setText(std::string str) {
     mLabel.set_text(str);
 };
 
-void Gui::close() {
+bool Gui::on_delete_event(GdkEventAny* any_event) {
+    std::cout << "void Gui::on_delete_event()\n";
+    mController->stop();
     hide();
+    return true;
 }
 
 void Gui::buttonStartClicked() {
+    std::cout << "void Gui::buttonStartClicked()\n";
     mController->start();
-    std::cout << "buttonStartClicked\n";
 }
 
 void Gui::buttonPauseClicked() {
+    std::cout << "void Gui::buttonPauseClicked()\n";
     mController->pause();
-    std::cout << "buttonPauseClicked\n";
 }
 
 void Gui::buttonStopClicked() {
+    std::cout << "void Gui::buttonStopClicked()\n";
     mController->stop();
-    std::cout << "buttonStopClicked\n";
 }

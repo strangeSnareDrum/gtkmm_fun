@@ -12,11 +12,12 @@ class Controller;
 class Gui : public Gtk::Window {
    public:
     Gui();
+    ~Gui();
     void init(Controller* contoller);
     void setText(std::string str);
-    void close();
 
    private:
+    bool on_delete_event(GdkEventAny* any_event);
     void buttonStartClicked();
     void buttonPauseClicked();
     void buttonStopClicked();
