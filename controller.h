@@ -7,27 +7,20 @@
 
 class Gui;  // forward declaration
 
-enum State {
-    idle = 0,
-    running,
-    paused,
-    panicked,
-};
+enum State { stopped = 0, paused, running };
 
 class Controller {
    public:
     Controller(Gui* gui);
-    Controller();
     ~Controller();
     void start();
+    void pause();
     void stop();
     void inc();
 
    private:
     void runner();
-    bool mRunning = false;
     std::thread mRunnerThread;
-    int mNumber;
     State mState;
     Gui* mGui;
 };

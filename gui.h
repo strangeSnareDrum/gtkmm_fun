@@ -18,9 +18,10 @@ class Gui : public Gtk::Window {
 
    private:
     void buttonStartClicked();
+    void buttonPauseClicked();
     void buttonStopClicked();
     Gtk::Box mBoxMain, mBoxL, mBoxR;
-    Gtk::Button mButtonStart, mButtonStop;
+    Gtk::Button mButtonStart, mButtonPause, mButtonStop;
     Gtk::Label mLabel;
     Controller* mController;
 };

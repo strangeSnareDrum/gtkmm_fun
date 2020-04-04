@@ -18,6 +18,11 @@ Gui::Gui()
     mButtonStart.signal_clicked().connect(
         sigc::mem_fun(*this, &Gui::buttonStartClicked));
 
+    // mButtonPause
+    mButtonPause.set_label("pause");
+    mButtonPause.signal_clicked().connect(
+        sigc::mem_fun(*this, &Gui::buttonPauseClicked));
+
     // mButtonStop
     //    mButtonStop.set_size_request(30, 80);
     mButtonStop.set_label("stop");
@@ -28,6 +33,7 @@ Gui::Gui()
     mBoxMain.pack_start(mBoxL);
     mBoxMain.pack_start(mBoxR);
     mBoxL.pack_start(mButtonStart);
+    mBoxL.pack_start(mButtonPause);
     mBoxL.pack_start(mButtonStop);
     mBoxR.pack_start(mLabel);
     mLabel.set_visible(true);
@@ -49,6 +55,11 @@ void Gui::close() {
 void Gui::buttonStartClicked() {
     mController->start();
     std::cout << "buttonStartClicked\n";
+}
+
+void Gui::buttonPauseClicked() {
+    mController->pause();
+    std::cout << "buttonPauseClicked\n";
 }
 
 void Gui::buttonStopClicked() {
