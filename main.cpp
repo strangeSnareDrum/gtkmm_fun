@@ -9,11 +9,11 @@ int main() {
     auto app = Gtk::Application::create("christian.hanner.hero");
     Gui myGui;
     Controller myController(&myGui);
-    //    myGui.init(&myController);
+    myGui.init(&myController);
 
-    myController.start();
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    myController.stop();
+    // myController.start();
+    // std::this_thread::sleep_for(std::chrono::seconds(1));
+    // myController.stop();
 
     app->run(myGui);
 

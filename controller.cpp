@@ -40,9 +40,10 @@ void Controller::inc() {
 
 void Controller::runner() {
     std::cout << "Starting runner()\n";
+    int counter = 0;
     while (mState == State::running) {
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
-        std::cout << "tick\n";
+        mGui->setText(std::to_string(counter++));
     }
     std::cout << "runner() returns\n";
 }

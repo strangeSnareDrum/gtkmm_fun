@@ -5,12 +5,14 @@
 #include <gtkmm/label.h>
 #include <gtkmm/window.h>
 
-//#include "controller.h"
+#include "controller.h"
+
+class Controller;
 
 class Gui : public Gtk::Window {
    public:
     Gui();
-    // void init(Controller* contoller);
+    void init(Controller* contoller);
     void setText(std::string str);
     void close();
 
@@ -20,5 +22,5 @@ class Gui : public Gtk::Window {
     Gtk::Box mBoxMain, mBoxL, mBoxR;
     Gtk::Button mButtonStart, mButtonStop;
     Gtk::Label mLabel;
-    //    Controller* mController;
+    Controller* mController;
 };

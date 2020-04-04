@@ -5,6 +5,8 @@
 
 #include "gui.h"
 
+class Gui;  // forward declaration
+
 enum State {
     idle = 0,
     running,

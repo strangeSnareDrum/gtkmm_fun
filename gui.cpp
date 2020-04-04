@@ -34,9 +34,9 @@ Gui::Gui()
     show_all();
 }
 
-// void init(Controller* controller) {
-//     this->mController = controller;
-// }
+void Gui::init(Controller* controller) {
+    mController = controller;
+}
 
 void Gui::setText(std::string str) {
     mLabel.set_text(str);
@@ -47,9 +47,11 @@ void Gui::close() {
 }
 
 void Gui::buttonStartClicked() {
+    mController->start();
     std::cout << "buttonStartClicked\n";
 }
 
 void Gui::buttonStopClicked() {
+    mController->stop();
     std::cout << "buttonStopClicked\n";
 }
