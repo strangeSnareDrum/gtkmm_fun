@@ -36,11 +36,11 @@ void Controller::pause() {
 void Controller::stop() {
     std::cout << "void Controller::stop()\n";
     if (mState != State::stopped) {
-        std::cout << "join worker thread\n";
         mCounter = 0;
         mGui->setText(std::to_string(mCounter));
         mState = State::stopped;
         mRunnerThread.join();
+        std::cout << "worker thread joined\n";
     }
     std::cout << "Setting mState = stopped\n";
 }

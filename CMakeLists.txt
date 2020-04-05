@@ -1,13 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(no2)
+project(gtkmmfun)
 
 set(SRC main.cpp
         logic.cpp
         controller.cpp
         gui.cpp)
-
-SET(CMAKE_CXX_COMPILER "/usr/bin/clang++-9")
 
 find_package(PkgConfig)
 pkg_check_modules(GTKMM gtkmm-3.0) # defines GTKMM_INCLUDE_DIRS, GTKMM_LIBRARY_DIRS and GTKMM_LIBRARIES 

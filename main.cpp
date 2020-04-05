@@ -4,7 +4,7 @@
 #include "controller.h"
 
 int main() {
-    auto app = Gtk::Application::create("christian.hanner.hero");
+    auto app = Gtk::Application::create("strange.snare.drum");
     Gui myGui;
     Controller myController(&myGui);
     myGui.init(&myController);

@@ -16,7 +16,6 @@ class Controller {
     void start();
     void pause();
     void stop();
-    void inc();
 
    private:
     void runner();
