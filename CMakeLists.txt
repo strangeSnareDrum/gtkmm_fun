@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 project(gtkmmfun)
+set(CXX_STANDARD VERSION 11)
 
 set(SRC main.cpp
         logic.cpp

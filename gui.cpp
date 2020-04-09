@@ -5,7 +5,10 @@
 Gui::Gui()
     : mBoxMain(Gtk::ORIENTATION_HORIZONTAL),
       mBoxL(Gtk::ORIENTATION_VERTICAL),
-      mLabel("") {
+      mBoxR(Gtk::ORIENTATION_VERTICAL),
+      mLabel(""),
+      mAdjustment(Gtk::Adjustment::create(200, 10, 1000, 10)),
+      mScaleUpdateSpeed(mAdjustment, Gtk::ORIENTATION_HORIZONTAL) {
     std::cout << "Gui constructor" << std::endl;
 
     // window
@@ -24,10 +27,16 @@ Gui::Gui()
         sigc::mem_fun(*this, &Gui::buttonPauseClicked));
 
     // mButtonStop
-    //    mButtonStop.set_size_request(30, 80);
     mButtonStop.set_label("stop");
     mButtonStop.signal_clicked().connect(
         sigc::mem_fun(*this, &Gui::buttonStopClicked));
+
+    // mScaleUpdateSpeed
+    mAdjustment->signal_value_changed().connect(
+        sigc::mem_fun(*this, &Gui::on_adjustment_value_changed));
+    mScaleUpdateSpeed.set_value_pos(Gtk::POS_LEFT);
+    mScaleUpdateSpeed.set_range(10, 1000);
+    mScaleUpdateSpeed.set_value(200);
 
     add(mBoxMain);
     mBoxMain.pack_start(mBoxL, Gtk::PACK_SHRINK, 10);
@@ -36,6 +45,7 @@ Gui::Gui()
     mBoxL.pack_start(mButtonPause, Gtk::PACK_EXPAND_WIDGET, 10);
     mBoxL.pack_start(mButtonStop, Gtk::PACK_EXPAND_WIDGET, 10);
     mBoxR.pack_start(mLabel);
+    mBoxR.pack_start(mScaleUpdateSpeed, Gtk::PACK_SHRINK, 10);
     mLabel.set_visible(true);
     show_all();
 }
@@ -62,6 +72,10 @@ bool Gui::on_delete_event(GdkEventAny* any_event) {
 void Gui::buttonStartClicked() {
     std::cout << "void Gui::buttonStartClicked()\n";
     mController->start();
+}
+
+void Gui::on_adjustment_value_changed() {
+    mController->setUpdateInterval(mAdjustment->get_value());
 }
 
 void Gui::buttonPauseClicked() {

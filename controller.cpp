@@ -36,19 +36,23 @@ void Controller::pause() {
 void Controller::stop() {
     std::cout << "void Controller::stop()\n";
     if (mState != State::stopped) {
-        mCounter = 0;
-        mGui->setText(std::to_string(mCounter));
         mState = State::stopped;
         mRunnerThread.join();
         std::cout << "worker thread joined\n";
+        mCounter = 0;
+        mGui->setText(std::to_string(mCounter));
     }
     std::cout << "Setting mState = stopped\n";
+}
+
+void Controller::setUpdateInterval(int updateInterval) {
+    mUpdateInterval = updateInterval;
 }
 
 void Controller::runner() {
     std::cout << "Starting runner()\n";
     while (mState != State::stopped) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        std::this_thread::sleep_for(std::chrono::milliseconds(mUpdateInterval));
         if (mState == State::running) {
             mGui->setText(std::to_string(mCounter++));
         }

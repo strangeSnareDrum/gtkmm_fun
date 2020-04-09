@@ -16,6 +16,7 @@ class Controller {
     void start();
     void pause();
     void stop();
+    void setUpdateInterval(int updateInterval);
 
    private:
     void runner();
@@ -23,4 +24,5 @@ class Controller {
     State mState;
     Gui* mGui;
     int mCounter;
+    int mUpdateInterval = 200;
 };
