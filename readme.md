@@ -8,7 +8,9 @@ apt-get install libgtkmm-3.0-dev
 https://cmake.org/download/
 
 # Build and run
+```bash
 $ mkdir build
 $ cd build
-$ rm -rf * && cmake .. && cmake --build .
+$ cmake .. && cmake --build .
 $ ./gtkmmfun
+```

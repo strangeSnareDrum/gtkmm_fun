@@ -33,11 +33,10 @@ Gui::Gui()
 
     // mScaleUpdateSpeed
     mAdjustment->signal_value_changed().connect(
-        sigc::mem_fun(*this, &Gui::on_adjustment_value_changed));
+        sigc::mem_fun(*this, &Gui::adjustmentValueChanged));
     mScaleUpdateSpeed.set_value_pos(Gtk::POS_LEFT);
-    mScaleUpdateSpeed.set_range(10, 1000);
-    mScaleUpdateSpeed.set_value(200);
 
+    // build the gui from the components prepared above
     add(mBoxMain);
     mBoxMain.pack_start(mBoxL, Gtk::PACK_SHRINK, 10);
     mBoxMain.pack_start(mBoxR);
@@ -74,7 +73,7 @@ void Gui::buttonStartClicked() {
     mController->start();
 }
 
-void Gui::on_adjustment_value_changed() {
+void Gui::adjustmentValueChanged() {
     mController->setUpdateInterval(mAdjustment->get_value());
 }
 

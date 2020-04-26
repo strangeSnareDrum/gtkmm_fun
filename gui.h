@@ -19,12 +19,15 @@ class Gui : public Gtk::Window {
     void setText(std::string str);
 
    private:
-    void on_adjustment_value_changed();
-    Glib::RefPtr<Gtk::Adjustment> mAdjustment;
-    bool on_delete_event(GdkEventAny* any_event);
+    // inherited gtkmm methods
+    bool on_delete_event(GdkEventAny* any_event) override;
+
+    void adjustmentValueChanged();
     void buttonStartClicked();
     void buttonPauseClicked();
     void buttonStopClicked();
+
+    Glib::RefPtr<Gtk::Adjustment> mAdjustment;
     Gtk::Box mBoxMain, mBoxL, mBoxR;
     Gtk::Button mButtonStart, mButtonPause, mButtonStop;
     Gtk::Scale mScaleUpdateSpeed;
