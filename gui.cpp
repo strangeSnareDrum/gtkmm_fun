@@ -14,7 +14,7 @@ Gui::Gui()
     // window
     set_title("t h e g u i");
     set_border_width(0);
-    set_default_size(400, 200);
+    set_default_size(400, 400);
 
     // mButtonStart
     mButtonStart.set_label("start");
@@ -44,6 +44,7 @@ Gui::Gui()
     mBoxL.pack_start(mButtonPause, Gtk::PACK_EXPAND_WIDGET, 10);
     mBoxL.pack_start(mButtonStop, Gtk::PACK_EXPAND_WIDGET, 10);
     mBoxR.pack_start(mLabel);
+    // mBoxR.pack_start(mActionBox);
     mBoxR.pack_start(mScaleUpdateSpeed, Gtk::PACK_SHRINK, 10);
     mLabel.set_visible(true);
     show_all();

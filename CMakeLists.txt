@@ -4,7 +4,7 @@ project(gtkmmfun)
 set(CXX_STANDARD VERSION 11)
 
 set(SRC main.cpp
-        logic.cpp
+        action_box.cpp
         controller.cpp
         gui.cpp)
 

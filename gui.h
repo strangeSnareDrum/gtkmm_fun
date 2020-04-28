@@ -3,10 +3,12 @@
 #include <gtkmm/adjustment.h>
 #include <gtkmm/box.h>
 #include <gtkmm/button.h>
+#include <gtkmm/drawingarea.h>
 #include <gtkmm/label.h>
 #include <gtkmm/scale.h>
 #include <gtkmm/window.h>
 
+#include "action_box.h"
 #include "controller.h"
 
 class Controller;
@@ -26,6 +28,8 @@ class Gui : public Gtk::Window {
     void buttonStartClicked();
     void buttonPauseClicked();
     void buttonStopClicked();
+
+    ActionBox mActionBox;
 
     Glib::RefPtr<Gtk::Adjustment> mAdjustment;
     Gtk::Box mBoxMain, mBoxL, mBoxR;
