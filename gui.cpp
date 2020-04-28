@@ -44,7 +44,7 @@ Gui::Gui()
     mBoxL.pack_start(mButtonPause, Gtk::PACK_EXPAND_WIDGET, 10);
     mBoxL.pack_start(mButtonStop, Gtk::PACK_EXPAND_WIDGET, 10);
     mBoxR.pack_start(mLabel);
-    // mBoxR.pack_start(mActionBox);
+    mBoxR.pack_start(mActionBox);
     mBoxR.pack_start(mScaleUpdateSpeed, Gtk::PACK_SHRINK, 10);
     mLabel.set_visible(true);
     show_all();
